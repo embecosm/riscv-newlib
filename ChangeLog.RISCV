@@ -1,0 +1,5 @@
+2017-07-04  Jeremy Bennett  <jeremy.bennett@embecosm.com>
+
+	* ChangeLog.RISCV: Created.
+	* libgloss/riscv/crt0.S: Set stack pointer for bare metal
+	RI5CY/PicoRV32.
