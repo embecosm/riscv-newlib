@@ -54,8 +54,13 @@ __internal_syscall(long n, long _a0, long _a1, long _a2, long _a3)
   register long a3 asm("a3") = _a3;
   register long a7 asm("a7") = n;
 
+#ifdef ECALL_SUPPORTED_ON_TARGET
   asm volatile ("scall"
 		: "+r"(a0) : "r"(a1), "r"(a2), "r"(a3), "r"(a7));
+#else
+  asm volatile ("nop\n\tebreak\n\tnop"
+		: "+r"(a0) : "r"(a1), "r"(a2), "r"(a3), "r"(a7));
+#endif
 
   if (a0 < 0)
     return __syscall_error (a0);

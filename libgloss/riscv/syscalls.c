@@ -149,9 +149,7 @@ ssize_t write(int file, const void* ptr, size_t len)
 
 int fstat(int file, struct stat* st)
 {
-  // stub implementation from libnosys
-  errno = ENOSYS;
-  return -1;
+  return syscall_errno(SYS_fstat, file, st, 0, 0);
 }
 
 //------------------------------------------------------------------------
