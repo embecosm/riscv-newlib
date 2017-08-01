@@ -1,5 +1,10 @@
 2017-08-01  Edward Jones  <ed.jones@embecosm.com>
 
+	* libgloss/riscv/crt0.S: Replace call to memset with
+	a small inline loop.
+
+2017-08-01  Edward Jones  <ed.jones@embecosm.com>
+
 	* libgloss/riscv/Makefile.in: Add new files to build.
 	* libgloss/riscv/_exit.c: Added new file.
 	* libgloss/riscv/access.c: Likewise.

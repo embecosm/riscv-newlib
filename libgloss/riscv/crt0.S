@@ -21,9 +21,13 @@ _start:
 
 	la      a0, _edata
 	la      a2, _end
-	sub     a2, a2, a0
-	li      a1, 0
-	call    memset
+	beq     a0, a2, 1f
+0:
+	sb      zero, 0(a0)
+	add     a0, a0, 1
+	bne     a2, a0, 0b
+1:
+
 
 #	la      a0, __libc_fini_array   # Register global termination functions
 #	call    atexit                  #  to be called upon exit
