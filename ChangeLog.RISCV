@@ -1,3 +1,41 @@
+2017-08-01  Edward Jones  <ed.jones@embecosm.com>
+
+	* libgloss/riscv/Makefile.in: Add new files to build.
+	* libgloss/riscv/_exit.c: Added new file.
+	* libgloss/riscv/access.c: Likewise.
+	* libgloss/riscv/chdir.c: Likewise.
+	* libgloss/riscv/chmod.c: Likewise.
+	* libgloss/riscv/chown.c: Likewise.
+	* libgloss/riscv/close.c: Likewise.
+	* libgloss/riscv/execve.c: Likewise.
+	* libgloss/riscv/faccessat.c: Likewise.
+	* libgloss/riscv/fork.c: Likewise.
+	* libgloss/riscv/fstat.c: Likewise.
+	* libgloss/riscv/fstatat.c: Likewise.
+	* libgloss/riscv/ftime.c: Likewise.
+	* libgloss/riscv/getcwd.c: Likewise.
+	* libgloss/riscv/getpid.c: Likewise.
+	* libgloss/riscv/gettimeofday.c: Likewise.
+	* libgloss/riscv/isatty.c: Likewise.
+	* libgloss/riscv/kill.c: Likewise.
+	* libgloss/riscv/link.c: Likewise.
+	* libgloss/riscv/lseek.c: Likewise.
+	* libgloss/riscv/lstat.c: Likewise.
+	* libgloss/riscv/machine/syscall.h: Likewise.
+	* libgloss/riscv/open.c: Likewise.
+	* libgloss/riscv/openat.c: Likewise.
+	* libgloss/riscv/read.c: Likewise.
+	* libgloss/riscv/sbrk.c: Likewise.
+	* libgloss/riscv/stat.c: Likewise.
+	* libgloss/riscv/syscalls.c: Move implementation of each syscall
+	into seperate files.
+	* libgloss/riscv/sysconf.c: Likewise.
+	* libgloss/riscv/times.c: Likewise.
+	* libgloss/riscv/unlink.c: Likewise.
+	* libgloss/riscv/utime.c: Likewise.
+	* libgloss/riscv/wait.c: Likewise.
+	* libgloss/riscv/write.c: Likewise.
+
 2017-07-04  Jeremy Bennett  <jeremy.bennett@embecosm.com>
 
 	* ChangeLog.RISCV: Created.

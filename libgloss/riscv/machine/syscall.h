@@ -69,3 +69,7 @@ __internal_syscall(long n, long _a0, long _a1, long _a2, long _a3)
 }
 
 #endif
+
+#define syscall_errno(n, a, b, c, d) \
+        __internal_syscall(n, (long)(a), (long)(b), (long)(c), (long)(d))
+

@@ -8,7 +8,10 @@ gloss_hdrs = \
 	memory.h \
 
 gloss_srcs = \
-	syscalls.c \
+	access.c chdir.c chmod.c chown.c close.c execve.c _exit.c faccessat.c \
+  fork.c fstatat.c fstat.c ftime.c getcwd.c getpid.c gettimeofday.c \
+	isatty.c kill.c link.c lseek.c lstat.c openat.c open.c read.c sbrk.c \
+	stat.c syscalls.c sysconf.c times.c unlink.c utime.c wait.c write.c
 
 # Extra files
 
