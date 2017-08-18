@@ -17,6 +17,8 @@ gloss_srcs = \
 
 crt0_asm      = crt0.S
 
+ri5cy_asm     = ri5cy-interrupts.s
+
 # Multilib support variables.
 # TOP is used instead of MULTI{BUILD,SRC}TOP.
 
@@ -139,6 +141,21 @@ deps += $(crt0_deps)
 junk += $(crt0_deps) $(crt0_obj)
 
 install_libs += $(crt0_obj)
+
+#-------------------------------------------------------------------------
+# Build ri5cy-interrupts.o
+#-------------------------------------------------------------------------
+
+ri5cy_obj  = $(patsubst %.s, %.o, $(ri5cy_asm))
+ri5cy_deps = $(patsubst %.s, %.d, $(ri5cy_asm))
+
+$(ri5cy_obj) : %.o : %.s
+	$(COMPILE) -c $<
+
+deps += $(ri5cy_deps)
+junk += $(ri5cy_deps) $(ri5cy_obj)
+
+install_libs += $(ri5cy_obj)
 
 #-------------------------------------------------------------------------
 # Autodependency files
