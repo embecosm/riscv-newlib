@@ -13,9 +13,8 @@ _start:
 	addi  gp, gp, %pcrel_lo(1b)
 	.option pop
 
-	# Hack the stack
-
-	li	sp,0x3ffffc
+	# Set the stack pointer, aligning it to an 8-byte boundary
+	li	sp,0x3ffff0
 
 	# Clear the bss segment
 

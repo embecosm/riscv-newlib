@@ -1,3 +1,8 @@
+2017-08-29  Edward Jones  <ed.jones@embecosm.com>
+
+	* libgloss/riscv/crt0.S: Set the stack pointer to be
+	16-byte aligned.
+
 2017-08-01  Edward Jones  <ed.jones@embecosm.com>
 
 	* libgloss/riscv/crt0.S: Replace call to memset with
