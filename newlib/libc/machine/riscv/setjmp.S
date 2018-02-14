@@ -58,6 +58,19 @@ setjmp:
   .globl  longjmp
   .type   longjmp, @function
 longjmp:
+
+#ifdef STACK_ERASE
+/* Load new SP to s0 and advance SP to new SP whilst erasing */
+        REG_L s0, 13*SZREG(a0)
+stack_erase:
+        beq sp, s0, erase_done
+        sw x0,0(sp)
+        addi sp, sp, 4
+        j stack_erase
+
+erase_done:
+#endif
+
 	REG_L ra,  0*SZREG(a0)
 	REG_L s0,  1*SZREG(a0)
 	REG_L s1,  2*SZREG(a0)
@@ -72,7 +85,9 @@ longjmp:
 	REG_L s9, 10*SZREG(a0)
 	REG_L s10,11*SZREG(a0)
 	REG_L s11,12*SZREG(a0)
-	REG_L sp, 13*SZREG(a0)
+#ifndef STACK_ERASE
+        REG_L sp, 13*SZREG(a0)
+#endif
 #else
 	REG_L sp, 3*SZREG(a0)
 #endif

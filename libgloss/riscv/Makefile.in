@@ -195,7 +195,7 @@ crt0_obj  = $(patsubst %.S, %.o, $(crt0_asm))
 crt0_deps = $(patsubst %.S, %.d, $(crt0_asm))
 
 $(crt0_obj) : %.o : %.S
-	$(COMPILE) -c $<
+	$(COMPILE) @STACK_ERASE@ -c $<
 
 deps += $(crt0_deps)
 junk += $(crt0_deps) $(crt0_obj)

@@ -565,6 +565,7 @@ ac_unique_file="crt0.S"
 ac_unique_file="crt0.S"
 ac_subst_vars='LTLIBOBJS
 LIBOBJS
+STACK_ERASE
 INSTALL_DATA
 INSTALL_SCRIPT
 INSTALL_PROGRAM
@@ -612,6 +613,7 @@ SHELL'
 ac_subst_files=''
 ac_user_opts='
 enable_option_checking
+enable_stack_erase
 '
       ac_precious_vars='build_alias
 host_alias
@@ -1220,6 +1222,12 @@ fi
 if test -n "$ac_init_help"; then
 
   cat <<\_ACEOF
+
+Optional Features:
+  --disable-option-checking  ignore unrecognized --enable/--with options
+  --disable-FEATURE       do not include FEATURE (same as --enable-FEATURE=no)
+  --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]
+  --enable-stack-erase    Enable stack erase checking and in longjmp
 
 Report bugs to the package provider.
 _ACEOF
@@ -2228,6 +2236,22 @@ test -z "$INSTALL_DATA" && INSTALL_DATA='${INSTALL} -m 644'
 #-------------------------------------------------------------------------
 # Output
 #-------------------------------------------------------------------------
+
+# Check whether --enable-stack-erase was given.
+if test "${enable_stack_erase+set}" = set; then :
+  enableval=$enable_stack_erase; ENABLE_STACK_ERASE=$enableval
+else
+  ENABLE_STACK_ERASE=no
+fi
+
+
+if test "${ENABLE_STACK_ERASE}" = "yes" ; then
+  STACK_ERASE=-DSTACK_ERASE
+
+else
+  STACK_ERASE=-DNO_STACK_ERASE
+
+fi
 
 if test "$srcdir" = "." ; then
   if test "${with_target_subdir}" != "." ; then

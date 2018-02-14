@@ -640,6 +640,7 @@ build
 newlib_basedir
 MAY_SUPPLY_SYSCALLS_FALSE
 MAY_SUPPLY_SYSCALLS_TRUE
+STACK_ERASE
 target_alias
 host_alias
 build_alias
@@ -681,6 +682,7 @@ SHELL'
 ac_subst_files=''
 ac_user_opts='
 enable_option_checking
+enable_stack_erase
 enable_multilib
 enable_target_optspace
 enable_malloc_debugging
@@ -1317,6 +1319,7 @@ Optional Features:
   --disable-option-checking  ignore unrecognized --enable/--with options
   --disable-FEATURE       do not include FEATURE (same as --enable-FEATURE=no)
   --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]
+  --enable-stack-erase   Enable stack erase in longjmp
   --enable-multilib         build many library versions (default)
   --enable-target-optspace  optimize for space
   --enable-malloc-debugging indicate malloc debugging requested
@@ -1805,6 +1808,26 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
 
+# Check whether --enable-stack-erase was given.
+if test "${enable_stack_erase+set}" = set; then :
+  enableval=$enable_stack_erase; case "${enableval}" in
+   yes) stack_erase=yes ;;
+   no)  stack_erase=no  ;;
+   *)   as_fn_error $? "bad value ${enableval} for stack-erase" "$LINENO" 5 ;;
+ esac
+else
+  stack_erase=no
+fi
+
+
+if test ${stack_erase} = "yes" ; then
+  STACK_ERASE=-DSTACK_ERASE
+
+else
+  STACK_ERASE=-DNO_STACK_ERASE
+
+fi
+
 ac_aux_dir=
 for ac_dir in ../../../.. "$srcdir"/../../../..; do
   if test -f "$ac_dir/install-sh"; then
@@ -1832,6 +1855,8 @@ fi
 ac_config_guess="$SHELL $ac_aux_dir/config.guess"  # Please don't use this var.
 ac_config_sub="$SHELL $ac_aux_dir/config.sub"  # Please don't use this var.
 ac_configure="$SHELL $ac_aux_dir/configure"  # Please don't use this var.
+
+
 
 
 
@@ -3399,7 +3424,6 @@ fi
 # Hard-code OBJEXT.  Normally it is set by AC_OBJEXT, but we
 # use oext, which is set in configure.host based on the target platform.
 OBJEXT=${oext}
-
 
 
 

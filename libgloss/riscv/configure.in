@@ -23,6 +23,18 @@ AC_PROG_INSTALL
 # Output
 #-------------------------------------------------------------------------
 
+AC_ARG_ENABLE(stack-erase,
+[AS_HELP_STRING([--enable-stack-erase],
+                [Enable stack erase checking and in longjmp])],
+ENABLE_STACK_ERASE=$enableval,
+ENABLE_STACK_ERASE=no)
+
+if test "${ENABLE_STACK_ERASE}" = "yes" ; then
+  AC_SUBST(STACK_ERASE, -DSTACK_ERASE)
+else
+  AC_SUBST(STACK_ERASE, -DNO_STACK_ERASE)
+fi
+
 if test "$srcdir" = "." ; then
   if test "${with_target_subdir}" != "." ; then
     libgloss_topdir="${srcdir}/${with_multisrctop}../../.."
